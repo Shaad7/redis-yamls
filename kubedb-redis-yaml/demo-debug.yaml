@@ -1,0 +1,41 @@
+apiVersion: kubedb.com/v1alpha2
+kind: Redis
+metadata:
+  name: redis-cluster
+  namespace: demo
+spec:
+  version: 4.0.6-v2-debug
+  mode: Cluster
+  cluster:
+    master: 4
+    replicas: 2
+  storageType: Durable
+  storage:
+    resources:
+      requests:
+        storage: "100Mi"
+    storageClassName: "standard"
+    accessModes:
+    - ReadWriteOnce
+  podTemplate:
+    spec:
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "100Mi"
+  terminationPolicy: WipeOut
+  # tls:
+  #   issuerRef:
+  #     apiGroup: cert-manager.io
+  #     name: redis-ca-issuer
+  #     kind: Issuer
+  #   certificates:
+  #   - alias: server
+  #     subject:
+  #       organizations:
+  #       - kubedb:server
+  #     dnsNames:
+  #     - localhost
+  #     ipAddresses:
+  #     - "127.0.0.1"
+

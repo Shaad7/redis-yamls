@@ -1,0 +1,42 @@
+redis-cli --cluster create \
+redis-cluster-shard0-0.redis-cluster-pods.demo.svc \
+redis-cluster-shard0-1.redis-cluster-pods.demo.svc \
+redis-cluster-shard1-0.redis-cluster-pods.demo.svc \
+redis-cluster-shard1-1.redis-cluster-pods.demo.svc \
+redis-cluster-shard2-0.redis-cluster-pods.demo.svc \
+redis-cluster-shard2-1.redis-cluster-pods.demo.svc \
+--cluster-replicas 1
+
+
+
+perl -MSocket -e "print inet_ntoa(scalar(gethostbyname(\"redis-cluster-shard0-1.redis-cluster-pods.demo.svc\")))"
+
+redis-cli --cluster add-node 10.244.0.253:6379 10.244.0.250:6379 --cluster-slave --cluster-master-id 112f5a5d1d69f98e9eb59c15c3d096a99f4b7d60
+
+redis-cli --cluster create 10.244.0.77:6379 10.244.0.78:6379 10.244.0.79:6379 --cluster-replicas 0 --cluster-yes
+
+redis-cli --cluster add-node 10.244.0.78:6379 10.244.0.77:6379
+redis-cli --cluster add-node 10.244.0.78:6379 10.244.0.79:6379 10.244.0.77:6379
+
+redis-cli -c -h 10.244.0.3 cluster meet 10.244.0.9 6379
+
+redis-cli -c cluster replicate 21d11f50d5a3ec7327933deb3182ea85f2afb62e
+
+redis-cli --cluster add-node 10.244.0.126:6379 10.244.0.116
+
+redis-cli --cluster reshard "$POD_IP":6379 --cluster-from b32d1726fe646256d8b3337dbb3682ff161d39bb --cluster-to f172c7725e0b788d2e7aee2919df31a73b661151 --cluster-slots 1300 --cluster-yes
+
+redis-cli cluster failover
+redis-cli --cluster del-node 10.244.0.78:6379 b32d1726fe646256d8b3337dbb3682ff161d39bb
+
+
+ echo "yes" | redis-trib create 10.244.0.237:6379 10.244.0.239:6379 10.244.0.238:6379
+
+ redis-trib add-node --slave --master-id bc76b2a98e52fa0db1d88cd5f618b28e1038df43 "$POD_IP:6329" 
+10.244.0.165:6379
+
+
+
+
+
+ 
