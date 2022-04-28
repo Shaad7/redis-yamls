@@ -8,5 +8,5 @@ spec:
   databaseRef:
     name: redis-cluster
   horizontalScaling:
-    master: 3 # 4
-    replicas: 1 # 2
+    master: 5 # 4
+    replicas: 3 # 2
