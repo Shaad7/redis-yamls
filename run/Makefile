@@ -19,7 +19,7 @@ run-enterprise:
 .PHONY : scale
 scale:
 	-kubectl delete redisopsrequest redisops-horizontal -n demo
-	kubectl apply -f /home/shaad/kubedb-redis-yaml/redis-horizontal-ops.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/redis-horizontal-ops.yaml
 
 
 .PHONY : run-and-load-node-finder 
@@ -33,8 +33,7 @@ build-redis-node-finder:
 
 .PHONY : run-init-docker
 run-init-docker :
-	docker build /home/shaad/go/src/kubedb.dev/redis-init-docker -t shaad7/redis-init-docker:1.0
-	kind load docker-image shaad7/redis-init-docker:1.0
+	cd /home/shaad/go/src/kubedb.dev/redis-init-docker && $(MAKE) push-to-kind
 
 .PHONY : delete-cluster 
 delete-cluster : 
@@ -43,7 +42,7 @@ delete-cluster :
 
 .PHONY : create-cluster 
 create-cluster : 
-	kubectl apply -f /home/shaad/kubedb-redis-yaml/demo-debug.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/demo-debug.yaml
 
 
 .PHONY : run-controller 
@@ -56,7 +55,7 @@ run-controller : delete-cluster
 
 .PHONY : create-cluster-prev
 create-cluster-prev:
-	kubectl apply -f /home/shaad/kubedb-redis-yaml/demo-prev.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/demo-prev.yaml
 
 .PHONY : run-controller-prev 
 run-controller-prev: run-controller sleep30 create-cluster-prev
