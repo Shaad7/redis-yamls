@@ -4,10 +4,10 @@ metadata:
   name: redis-cluster
   namespace: demo
 spec:
-  version: 4.0.11
+  version: 6.2.5
   mode: Cluster
   cluster:
-    master: 3
+    master: 6
     replicas: 1
   storageType: Durable
   storage:
