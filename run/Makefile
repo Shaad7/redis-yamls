@@ -6,15 +6,15 @@ run-everything: run-controller run-script
 .PHONY : run-script
 run-script : run-init-docker delete-cluster sleep30 create-cluster
 
-.PHONY: deploy-enterprise-and-scale 
-deploy-enterprise-and-scale: delete-cluster run-enterprise create-cluster sleep60 scale
+.PHONY: deploy-ops-manager-and-scale 
+deploy-ops-manager-and-scale: delete-cluster run-ops-manager create-cluster sleep60 scale
 
 
-.PHONY: run-enterprise
-run-enterprise:
-	cd /home/shaad/go/src/kubedb.dev/enterprise && $(MAKE) uninstall
+.PHONY: run-ops-manager
+run-ops-manager:
+	cd /home/shaad/go/src/kubedb.dev/ops-manager && $(MAKE) uninstall
 	sleep 5
-	cd /home/shaad/go/src/kubedb.dev/enterprise && $(MAKE) deploy-to-kind 
+	cd /home/shaad/go/src/kubedb.dev/ops-manager && $(MAKE) deploy-to-kind 
 
 .PHONY : scale
 scale:
