@@ -1,0 +1,27 @@
+apiVersion: kubedb.com/v1alpha2
+kind: Redis
+metadata:
+  name: demo-rd
+  namespace: demo
+spec:
+  version: 6.2.5
+  replicas: 3
+  sentinelRef: 
+    name: sen
+    namespace: demo
+  mode: Sentinel
+  disableAuth: true
+  # tls:
+  #   issuerRef:
+  #     apiGroup: cert-manager.io
+  #     name: ca-issuer
+  #     kind: Issuer
+  storageType: Durable
+  storage:
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: "standard"
+    accessModes:
+    - ReadWriteOnce
+  terminationPolicy: WipeOut
