@@ -1,5 +1,13 @@
 SHELL=/bin/bash -o pipefail
 
+.PHONY : create-issuer
+create-issuer:
+	cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=redis/O=kubedb"
+	-cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && kubectl create secret tls redis-ca --cert=ca.crt  --key=ca.key --namespace=demo
+	sleep 5
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls/demo-issuer.yaml
+
+
 .PHONY : run-everything
 run-everything: run-controller run-script
 
