@@ -1,7 +1,7 @@
 apiVersion: ops.kubedb.com/v1alpha1
 kind: RedisOpsRequest
 metadata:
-  name: rdops-remove-tls
+  name: rdops-tls-remove
   namespace: demo
 spec:
   type: ReconfigureTLS
