@@ -24,5 +24,17 @@ spec:
           cpu: "100m"
           memory: "100Mi"
   terminationPolicy: WipeOut
-  
-
+  tls:
+    issuerRef:
+      apiGroup: cert-manager.io
+      name: redis-ca-issuer
+      kind: Issuer
+    certificates:
+    - alias: server
+      subject:
+        organizations:
+        - kubedb:server
+      dnsNames:
+      - localhost
+      ipAddresses:
+      - "127.0.0.1"
