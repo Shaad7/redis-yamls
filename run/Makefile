@@ -9,10 +9,10 @@ clean-issuer:
 create-issuer:
 	-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 	sleep 15
-	cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=redis/O=kubedb"
-	-cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && kubectl create secret tls redis-ca --cert=ca.crt  --key=ca.key --namespace=demo
+	cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=redis/O=kubedb"
+	-cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls && kubectl create secret tls redis-ca --cert=ca.crt  --key=ca.key --namespace=demo
 	sleep 15
-	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls/demo-issuer.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls/demo-issuer.yaml
 
 
 .PHONY: clean-updated-issuer
@@ -24,10 +24,10 @@ clean-updated-issuer:
 create-updated-issuer:
 	-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 	sleep 15
-	cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=redis-updated/O=kubedb-updated"
-	-cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls && kubectl create secret tls redis-ca-updated --cert=ca.crt  --key=ca.key --namespace=demo
+	cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=redis-updated/O=kubedb-updated"
+	-cd /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls && kubectl create secret tls redis-ca-updated --cert=ca.crt  --key=ca.key --namespace=demo
 	sleep 15
-	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/tls/demo-issuer-updated.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/reconfigure-tls//demo-issuer-updated.yaml
 
 .PHONY : run-everything
 run-everything: run-controller run-script
