@@ -35,6 +35,8 @@ redis-cli --cluster del-node 10.244.0.78:6379 b32d1726fe646256d8b3337dbb3682ff16
  redis-trib add-node --slave --master-id bc76b2a98e52fa0db1d88cd5f618b28e1038df43 "$POD_IP:6329" 
 10.244.0.165:6379
 
+redis-cli --cluster rebalance 192.168.11.135:6379 --cluster-use-empty-masters
+
 
 
 
