@@ -37,6 +37,16 @@ redis-cli --cluster del-node 10.244.0.78:6379 b32d1726fe646256d8b3337dbb3682ff16
 
 redis-cli --cluster rebalance 192.168.11.135:6379 --cluster-use-empty-masters
 
+redis-cli --cluster rebalance 10.244.0.38:6379 --cluster-weight 3c173283b9506d9966980053a767bcbd8ed7f315=0 073c429f8ce41fdd572d1cbc7c904c7354d3e141=0
+
+redis-trib rebalance --weight 2816fa6164ebbedcb42868e9633b60a399a883f5=0 --weight 0e712824af79963c27af25722c3bd626ed10b1cf=0 10.244.0.204:6379
+
+redis-cli --tls --cert "/certs/client.crt" --key "/certs/client.key" --cacert "/certs/ca.crt" cluster nodes
+
+redis-cli -c --tls --cert "/certs/client.crt" --key "/certs/client.key" --cacert "/certs/ca.crt"
+
+
+
 
 
 

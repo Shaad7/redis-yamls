@@ -1,12 +1,10 @@
 apiVersion: ops.kubedb.com/v1alpha1
 kind: RedisOpsRequest
 metadata:
-  name: redisops-horizontal
+  name: restart-redis-ops
   namespace: demo
 spec:
-  type: HorizontalScaling
+  type: Restart
   databaseRef:
     name: redis-cluster
-  horizontalScaling:
-    master: 7 
-    replicas: 2
+    
