@@ -7,14 +7,14 @@ spec:
   version: 6.2.5
   mode: Cluster
   cluster:
-    master: 7
-    replicas: 2
+    master: 3
+    replicas: 1
   storageType: Durable
   storage:
     resources:
       requests:
-        storage: "100Mi"
-    storageClassName: "standard"
+        storage: "8Gi"
+    storageClassName: "linode-block-storage"
     accessModes:
     - ReadWriteOnce
   podTemplate:

@@ -1,11 +1,11 @@
 apiVersion: ops.kubedb.com/v1alpha1
 kind: RedisOpsRequest
 metadata:
-  name: up-horizontal-redis-ops
+  name: upgrade-cluster
   namespace: demo
 spec:
-  type: HorizontalScaling
+  type: Upgrade
   databaseRef:
     name: redis-cluster
-  horizontalScaling:
-    master: 5   
+  upgrade:
+    targetVersion: 6.0.6
