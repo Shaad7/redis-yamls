@@ -71,7 +71,7 @@ delete-cluster :
 
 .PHONY : create-cluster 
 create-cluster : 
-	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/demo-debug.yaml
+	kubectl apply -f /home/shaad/go/src/github.com/Shaad7/redis-yamls/kubedb-redis-yaml/redis-cluster.yaml
 
 
 .PHONY : run-controller 

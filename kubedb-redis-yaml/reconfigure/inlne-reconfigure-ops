@@ -1,11 +1,12 @@
 apiVersion: ops.kubedb.com/v1alpha1
 kind: RedisOpsRequest
 metadata:
-  name: upgrade-cluster
+  name: inline-reconfigure-redis
   namespace: demo
 spec:
-  type: Upgrade
+  type: Reconfigure
   databaseRef:
     name: redis-cluster
-  upgrade:
-    targetVersion: 6.2.5
+  configuration:
+    inlineConfig: repl-diskless-sync no
+   

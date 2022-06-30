@@ -13,8 +13,8 @@ spec:
   storage:
     resources:
       requests:
-        storage: "8Gi"
-    storageClassName: "linode-block-storage"
+        storage: "100Mi"
+    storageClassName: "standard"
     accessModes:
     - ReadWriteOnce
   podTemplate:

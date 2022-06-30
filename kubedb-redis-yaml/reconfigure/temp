@@ -1,0 +1,3 @@
+➤ kubectl create secret generic -n demo updated-custom-config --from-file=./redis.conf
+
+ kubectl get secret -n demo updated-custom-config -o yaml
