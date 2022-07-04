@@ -1,0 +1,12 @@
+apiVersion: ops.kubedb.com/v1alpha1
+kind: RedisOpsRequest
+metadata:
+  name: reconfigure-redis
+  namespace: demo
+spec:
+  type: Reconfigure
+  databaseRef:
+    name: redis-cluster
+  configuration:
+    removeCustomConfig: true
+   

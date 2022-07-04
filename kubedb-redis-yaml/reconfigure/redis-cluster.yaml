@@ -4,7 +4,7 @@ metadata:
   name: redis-cluster
   namespace: demo
 spec:
-  version: 6.2.5
+  version: 5.0.3-v1
   mode: Cluster
   cluster:
     master: 3
@@ -23,6 +23,8 @@ spec:
         requests:
           cpu: "100m"
           memory: "100Mi"
+  configSecret: 
+     name: updated-custom-config
   terminationPolicy: WipeOut
   
 
