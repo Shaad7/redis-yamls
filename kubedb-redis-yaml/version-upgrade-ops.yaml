@@ -1,7 +1,7 @@
 apiVersion: ops.kubedb.com/v1alpha1
 kind: RedisOpsRequest
 metadata:
-  name: upgrade-cluster
+  name: upgrade-version
   namespace: demo
 spec:
   type: Upgrade

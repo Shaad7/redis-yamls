@@ -67,7 +67,9 @@ run-init-docker :
 .PHONY : delete-cluster 
 delete-cluster : 
 	-kubectl delete rd redis-cluster -n demo
-	-kubectl delete redisopsrequest redisops-horizontal -n demo  
+	-kubectl delete redisopsrequest -n demo  up-horizontal-redis-ops
+	-kubectl delete redisopsrequest -n demo  down-horizontal-redis-ops
+	-kubectl delete redisopsrequest -n demo  restart-redis-ops
 
 .PHONY : create-cluster 
 create-cluster : 
