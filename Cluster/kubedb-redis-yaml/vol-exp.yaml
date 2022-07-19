@@ -9,4 +9,4 @@ spec:
     name: redis-cluster
   volumeExpansion:
     mode: Offline
-    redis: 21Gi
+    redis: 15Gi
