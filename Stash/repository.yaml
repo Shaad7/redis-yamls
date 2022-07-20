@@ -9,5 +9,5 @@ spec:
       endpoint: https://ap-south-1.linodeobjects.com
       bucket: redis-backup
       region: ap-south-1
-      prefix: /demo
+      prefix: /demo7
     storageSecretName: s3-secret

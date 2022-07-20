@@ -4,8 +4,8 @@ metadata:
   name: redis
   namespace: demo
 spec:
-  version: 6.0.6
-  replicas: 5
+  version: 6.2.5
+  replicas: 3
   sentinelRef: 
     name: sentinel-redis
     namespace: demo
