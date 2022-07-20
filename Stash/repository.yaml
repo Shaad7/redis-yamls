@@ -1,0 +1,13 @@
+apiVersion: stash.appscode.com/v1alpha1
+kind: Repository
+metadata:
+  name: linode-repo
+  namespace: demo
+spec:
+  backend:
+    s3:
+      endpoint: https://ap-south-1.linodeobjects.com
+      bucket: redis-backup
+      region: ap-south-1
+      prefix: /demo
+    storageSecretName: s3-secret
