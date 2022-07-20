@@ -1,11 +1,11 @@
 apiVersion: kubedb.com/v1alpha2
 kind: Redis
 metadata:
-  name: demo-redis
+  name: redis
   namespace: demo
 spec:
-  version: 6.2.5
-  replicas: 3
+  version: 6.0.6
+  replicas: 5
   sentinelRef: 
     name: sentinel-redis
     namespace: demo

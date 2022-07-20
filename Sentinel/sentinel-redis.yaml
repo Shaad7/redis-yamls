@@ -4,8 +4,8 @@ metadata:
   name: sentinel-redis
   namespace: demo
 spec:
-  version: 6.2.5
-  replicas: 3 
+  version: 5.0.3-v1
+  replicas: 4
   disableAuth: true
   storageType: Durable
   # tls:
