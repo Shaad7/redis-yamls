@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/shaad/go/src/github.com/Shaad7/redis-yamls/Sentinel'
+make: Leaving directory '/home/shaad/go/src/github.com/Shaad7/redis-yamls/Sentinel'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
